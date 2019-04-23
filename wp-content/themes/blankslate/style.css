@@ -1,5 +1,5 @@
 /*
-Theme Name: BlankSlate
+Theme Name: Blankslate_Child_ThailandFoodGuides 
 Theme URI: https://github.com/tidythemes/blankslate
 Author: TidyThemes
 Author URI: http://tidythemes.com/
@@ -16,3 +16,156 @@ BlankSlate is distributed under the terms of the GNU GPL
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}body{line-height:1}button{outline:0}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}q{display:inline;font-style:italic}q:before{content:'"';font-style:normal}q:after{content:'"';font-style:normal}textarea,input[type="text"],input[type="button"],input[type="submit"],input[type="reset"],input[type="search"],input[type="password"]{-webkit-appearance:none;appearance:none;border-radius:0}table{border-collapse:collapse;border-spacing:0}th,td{padding:2px}big{font-size:120%}small,sup,sub{font-size:80%}sup{vertical-align:super}sub{vertical-align:sub}dd{margin-left:20px}kbd,tt{font-family:courier;font-size:12px}ins{text-decoration:underline}del,strike,s{text-decoration:line-through}dt{font-weight:bold}address,cite,var{font-style:italic}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 .sticky{}.bypostauthor{}.wp-caption{}.wp-caption-text{}.gallery-caption{}.alignright{}.alignleft{}.aligncenter{}.screen-reader-text{clip:rect(1px, 1px, 1px, 1px);position:absolute !important}
+
+@font-face{
+    font-family: 'Montserrat';
+    src:url('fonts/Montserrat-Regular.ttf');
+    font-weight: normal;
+}
+
+@font-face{
+    font-family: 'Montserrat';
+    src:url('fonts/Montserrat-Bold.ttf');
+    font-weight: bold;
+}
+
+
+@font-face{
+    font-family: 'Montserrat';
+    src:url('fonts/Montserrat-Light.ttf');
+    font-weight: 300;
+}
+
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: 'Montserrat';
+}
+
+.menu a{
+    font-family: 'Montserrat';
+}
+
+#header{
+    background: #86a85d;
+    padding: 5px 0px;
+}
+
+.img-fluid{
+    width: 100%;
+}
+
+.logo-container{
+    width:100px;
+}
+
+.container{
+    max-width:1140px;
+    margin: auto; 
+}
+
+.row{
+    display: flex;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+#header{
+    position: fixed;
+    width: 100%;
+}
+#menu .menu{
+    display: flex;
+}
+#menu .menu li{
+    padding:5px 0px;
+    margin-left: 17px;
+    border-bottom: 0px solid #487e07;
+    transition: .1s all linear;
+}
+
+#menu .menu li:hover{
+    border-bottom: 5px solid #487e07;
+}
+
+#menu .menu li.current_page_item{
+    border-bottom: 5px solid #487e07;
+}
+
+#menu .menu a{
+    color: white;
+    font-weight: bold;
+    font-size: .9em;
+}
+
+.justify-content-between{
+    justify-content: space-between;
+}
+
+.fa-search{
+    color:white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 16px;
+}
+.fa-search:hover{
+    color:#487e07;
+}
+
+.banner{
+    margin-top: 0px;
+    text-align: center;
+    font-family: 'Montserrat';
+    background: url('images/Green\ Papaya\ Salad.png') no-repeat center center;
+    background-position: 50%;
+    padding: 22em 10em 20em 10em;
+}
+
+.banner .banner-title{
+    font-weight: bold;
+    font-size: 4em;
+    color:white;
+    margin-bottom: 7px;
+}
+
+.banner .banner-desc{
+    color: white;
+    max-width: 35em;
+    margin:auto;
+    font-size: 1.3em;
+    font-weight: 300;
+    line-height: 27px;
+}
+
+.green{
+    color: #86a85d;
+}
+
+.section-title{
+    font-size: 2em;
+    font-weight: bold;
+    color: #86a85d;
+}
+
+@media (max-width:1024px){
+    .banner{
+        padding: 12em 9em 9em 9em;
+    }
+}
+@media (max-width:730px){
+    .banner{
+        padding: 8em 4em;
+    }
+    .banner .banner-desc{
+        font-size: 1.2em;
+    }
+    .banner .banner-title{
+        font-size: 3em;
+    }
+}

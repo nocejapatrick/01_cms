@@ -3,22 +3,23 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri().'/css/font-awesome.css';?>">
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <div id="wrapper" class="hfeed">
 <header id="header">
-<div id="branding">
-<div id="site-title">
-<?php if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '<h1>'; } ?>
-<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" rel="home"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></a>
-<?php if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1>'; } ?>
-</div>
-<div id="site-description"><?php bloginfo( 'description' ); ?></div>
-</div>
-<nav id="menu">
-<div id="search"><?php get_search_form(); ?></div>
-<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
-</nav>
+    <div class="container" style="padding:0 15px;">
+        <div class="row align-items-center justify-content-between">
+            <div class="logo-container">
+                <img src="<?php echo get_template_directory_uri().'/images/logo.png';?>" alt="" class="img-fluid">
+            </div>
+            <nav id="menu" class="row">
+        <!-- <div id="search"><?php get_search_form(); ?></div> -->
+            <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
+            <i class="fa fa-search" aria-hidden="true"></i>
+            </nav>
+        </div>
+    </div>
 </header>
 <div id="container">
