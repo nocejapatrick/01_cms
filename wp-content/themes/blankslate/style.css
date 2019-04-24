@@ -36,6 +36,12 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     font-weight: 300;
 }
 
+@font-face{
+    font-family: 'Montserrat';
+    src:url('fonts/Montserrat-SemiBold.ttf');
+    font-weight: 600;
+}
+
 
 *{
     margin:0;
@@ -79,6 +85,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 #header{
     position: fixed;
     width: 100%;
+    z-index: 99;
 }
 #menu .menu{
     display: flex;
@@ -123,7 +130,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     text-align: center;
     font-family: 'Montserrat';
     background: url('images/Green\ Papaya\ Salad.png') no-repeat center center;
-    background-position: 50%;
+    background-size:cover;
     padding: 22em 10em 20em 10em;
 }
 
@@ -153,9 +160,155 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     color: #86a85d;
 }
 
+.card{
+    position: relative; 
+    margin-top: 20px;
+    flex: 1 1 28%;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.content-holder{
+    position: absolute;
+    top: 64%;
+    padding: 20px;
+    background: rgba(0,0,0,.6);
+    height: 100%;
+    width: 100%;
+    transition: .3s all linear;
+}
+
+.content-holder *{
+    color: white;
+}
+
+.recipe-section{
+    flex: 1 1 60%;
+}
+
+#sidebar{
+    flex:1 1 35%;
+    margin-left: 30px;
+}
+.cat-like-holder .cat{
+    border:1px solid white;
+    font-weight: bold;
+    font-size: .7em;
+    padding:8px 10px;
+}
+.card .card-size{
+    margin:8px 0px;
+    height: 48px;
+    overflow: hidden;
+}
+.card .card-title{
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 23px;
+}
+
+.auth-date-holder .author{
+    font-weight: 600;
+    font-size: .9em;
+}
+
+.auth-date-holder .date{
+    font-weight: 300;
+    font-size: .8em;
+    opacity: .8;
+}
+
+.card .post-content{
+    margin-top: 20px;
+    line-height: 23px;
+    max-height: 227px;
+    overflow: hidden;
+}
+.card:hover .content-holder{
+    top:0%;
+}
+
+.card:nth-child(1){
+    flex: 1 1 100%;
+}
+.card:nth-child(1) .card-size{
+    max-height: 48px;
+    height: auto;
+}
+.card:nth-child(1) .post-content{
+    margin-top: 40px;
+}
+
+
+
+.photo-album{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    background: #eaeaea;
+    padding: 50px 0px;
+}
+
+.photo-album-container{
+    width:748px;
+    overflow: hidden;
+    position: relative;
+}
+
+.photo-album .left,.photo-album .right{
+    position: absolute;
+    border-radius: 50%;
+    background: #acacac;
+    opacity: .8;
+    cursor: pointer;
+}
+
+.photo-album .left{
+    top:50%;
+    padding: 10px 25px 10px 20px;
+    left:2%;
+    transform: translateY(-50%);
+}
+
+.photo-album .right{
+    top:50%;
+    right:2%;
+    padding: 10px 20px 10px 25px;
+    transform: translateY(-50%);
+}
+
+.photo-album i{
+    font-size: 3em;
+    color:white;
+}
+
+.dots{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: #d5d5d5;
+    opacity: .8;
+    margin:0px 6px;
+}
+.dots-container{
+    position: absolute;
+    top:90%;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.dots.active{
+    background: white;
+}
 @media (max-width:1024px){
     .banner{
         padding: 12em 9em 9em 9em;
+    }
+    .container{
+        max-width: 730px;
     }
 }
 @media (max-width:730px){
@@ -168,4 +321,31 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     .banner .banner-title{
         font-size: 3em;
     }
+    .container{
+        width: 93%;
+    }
+    .photo-album-container{
+        width:90%;
+        margin: auto;
+    }
+    .dots-container{
+        top:80%;
+    }
 }
+
+@media (max-width:565px){
+    .card{
+        flex:1 1 100%;
+    }
+}
+
+@media (max-width:480px){
+    .card .content-holder{
+        top:0%;
+    }
+}
+
+.flex-wrap{
+   flex-wrap: wrap;
+}
+
