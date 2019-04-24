@@ -101,7 +101,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     border-bottom: 5px solid #487e07;
 }
 
-#menu .menu li.current_page_item{
+#menu .menu li.current-menu-item{
     border-bottom: 5px solid #487e07;
 }
 
@@ -189,8 +189,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 
 #sidebar{
-    flex:1 1 35%;
-    margin-left: 30px;
+   
 }
 .cat-like-holder .cat{
     border:1px solid white;
@@ -207,6 +206,28 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     font-weight: bold;
     font-size: 1.1em;
     line-height: 23px;
+}
+
+.like{
+    cursor: pointer;
+}
+.translation-container *{
+    font-family: 'Montserrat' !important;
+    color: #86a85d;
+}
+.translation-container h1{
+    font-weight: bold;
+    font-size: 1.4em;
+}
+.translation-container .xoxo *{
+    font-weight: 300;
+    font-size: 1.01em;
+}
+.xoxo ul{
+    display: flex;
+}
+.xoxo ul li{
+    margin: 9px;
 }
 
 .auth-date-holder .author{
@@ -303,12 +324,110 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 .dots.active{
     background: white;
 }
+
+
+.flex-wrap{
+    flex-wrap: wrap;
+ }
+ 
+ .dots{
+     cursor: pointer;
+ }
+
+ #footer{
+     background: #86a85d;
+     /* padding-top: 40px; */
+ }
+
+ #footer * {
+     color: white;
+     font-family: 'Montserrat';
+ }
+
+ #copyright{
+     font-family: 'Montserrat';
+     font-weight: 300;
+     font-size: .8em;
+ }
+
+#footer .footer-options{
+    margin-top: 37px;
+    flex:1 1;
+}
+#footer .footer-options:last-child(){
+    flex:2 1 50%;
+}
+#footer ul{
+    margin-top: 10px;
+}
+
+#footer .nav-list li{
+    margin-top: 10px;
+    height: 16px;
+    overflow: hidden;
+}
+#footer .nav-list li a:hover{
+    text-decoration: underline;
+}
+
+#footer .footer-title{
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#footer .cat-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#footer .cat-list a{
+    font-weight: 300;
+}
+#footer .cat-list li{
+    padding: 5px 15px;
+    margin:5px;
+    border:2px solid white;
+}
+
+
+.my-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.my-form > *{
+    margin-top: 10px;
+}
+
+#footer .footer-options:first-child{
+    flex:0 1 15%;
+}
+
+.submit-btn{
+    font-weight: bold;
+    font-size: .9em;
+    border: 2px solid white;
+    cursor: pointer;
+    padding: 8px 0px;
+    background: transparent;
+}
+
+.font-awesome-font{
+    font-family: "FontAwesome" !important;
+}
+
 @media (max-width:1024px){
     .banner{
         padding: 12em 9em 9em 9em;
     }
     .container{
         max-width: 730px;
+    }
+    #footer .footer-options{
+        flex:1 1 50%;
+    }
+    #footer .footer-options:first-child{
+        flex:1 1 50%;
     }
 }
 @media (max-width:730px){
@@ -344,8 +463,3 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
         top:0%;
     }
 }
-
-.flex-wrap{
-   flex-wrap: wrap;
-}
-

@@ -114,3 +114,84 @@ return count( $comments_by_type['comment'] );
 return $count;
 }
 }
+
+// Our custom post type function
+function create_posttype() {
+ 
+    register_post_type( 'recipes',
+    // CPT Options
+        array(
+            'labels' => array(
+                'name' => __( 'Recipes' ),
+                'singular_name' => __( 'Recipes' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'supports'=> array('thumbnail','title','editor'),
+        )
+    );
+}
+// Hooking up our function to theme setup
+add_action( 'init', 'create_posttype' );
+
+add_filter( 'manage_edit-recipes_columns', 'my_edit_recipes_columns' ) ;
+
+function my_edit_recipes_columns( $columns ) {
+
+	$columns = array(
+		'cb' => '&lt;input type="checkbox" />',
+		'title' => __( 'Recipes' ),
+        'author'=> __('Author'),
+        'like'=> __('Likes'),
+		'date' => __( 'Date' )
+	);
+
+	return $columns;
+}
+
+add_action( 'manage_recipes_posts_custom_column', 'my_manage_recipes_columns', 10,2);
+
+function my_manage_recipes_columns( $column, $post_id ) {
+
+	switch( $column ) {
+
+		/* If displaying the 'duration' column. */
+		case 'like' :
+        
+            $like = get_post_meta( $post_id, 'likes', true );
+
+            if(empty($like)){
+                add_post_meta($post_id,'likes',0,true);
+                echo get_post_meta( $post_id, 'likes', true );;
+            }else{
+                echo $like;
+            }
+             
+			break;
+
+		/* If displaying the 'genre' column. */
+	}
+}
+
+
+
+function jsforwp_add_like(){
+    check_ajax_referer('nonce_name');
+   
+    $like_count = get_post_meta($_REQUEST["post_id"], "likes", true);
+    $like_count = (empty($like_count)) ? 0 : $like_count;
+    $new_like_count = $like_count + 1;
+
+    $like = update_post_meta($_REQUEST["post_id"], "likes",$new_like_count);
+
+    echo json_encode($new_like_count);
+    die();
+}
+
+function my_must_login() {
+    echo "You must log in to vote";
+    die();
+ }
+
+add_action('wp_ajax_jsforwp_add_like','jsforwp_add_like');
+add_action('wp_ajax_nopriv_jsforwp_add_like','my_must_login');

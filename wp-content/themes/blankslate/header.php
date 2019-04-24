@@ -5,6 +5,31 @@
 <meta name="viewport" content="width=device-width" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri().'/css/font-awesome.css';?>">
 <?php wp_head(); ?>
+<script>
+    jQuery(document).ready(function($){
+        $('.like').click(function(e){
+            e.preventDefault();
+            var post_id = $(this).attr('data-post_id');
+            var real_like = $(this).find('.real-like');
+            $.ajax({
+                type:'post',
+                dataType:'json',
+                url:'<?php echo admin_url('admin-ajax.php');?>',
+                data:{
+                    action:'jsforwp_add_like',
+                    _ajax_nonce:'<?php echo wp_create_nonce('nonce_name');?>',
+                    post_id: post_id
+                },
+                success:function(e){
+                    real_like.html(e);
+                },
+                error:function(e){
+                    alert(e);
+                }
+            })
+        });
+    })
+</script>
 </head>
 <body <?php body_class(); ?>>
 <div id="wrapper" class="hfeed">
