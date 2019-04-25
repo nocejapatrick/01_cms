@@ -175,16 +175,112 @@ function my_manage_recipes_columns( $column, $post_id ) {
 
 
 
+
+
+// 
+
+function create_blogpost() {
+ 
+    register_post_type( 'blogs',
+    // CPT Options
+        array(
+            'labels' => array(
+                'name' => __( 'Blog Posts' ),
+                'singular_name' => __( 'Blog Post' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'supports'=> array('thumbnail','title','editor'),
+        )
+    );
+}
+// Hooking up our function to theme setup
+add_action( 'init', 'create_blogpost' );
+
+add_filter( 'manage_edit-blogs_columns', 'my_edit_blogs_columns' ) ;
+
+function my_edit_blogs_columns( $columns ) {
+
+	$columns = array(
+		'cb' => '&lt;input type="checkbox" />',
+		'title' => __( 'Recipes' ),
+        'author'=> __('Author'),
+        'views'=> __('Views'),
+		'date' => __( 'Date' )
+	);
+
+	return $columns;
+}
+
+add_action( 'manage_blogs_posts_custom_column', 'my_manage_blogs_columns', 10,2);
+
+function my_manage_blogs_columns( $column, $post_id ) {
+
+	switch( $column ) {
+
+		/* If displaying the 'duration' column. */
+		case 'views' :
+        
+            $views = get_post_meta( $post_id, 'views', true );
+
+            if(empty($views)){
+                add_post_meta($post_id,'views',0,true);
+                echo get_post_meta( $post_id, 'views', true );;
+            }else{
+                echo $views;
+            }
+             
+			break;
+
+		/* If displaying the 'genre' column. */
+	}
+}
+// Blog
+
+
+
+
 function jsforwp_add_like(){
     check_ajax_referer('nonce_name');
    
-    $like_count = get_post_meta($_REQUEST["post_id"], "likes", true);
-    $like_count = (empty($like_count)) ? 0 : $like_count;
+    $like_count = get_post_meta($_REQUEST["post_id"], "likes", true); 
+
+    $users_who_liked = get_post_meta($_REQUEST["post_id"], "userssss", true);
+
+    if(empty($users_who_liked)){
+        add_post_meta($_REQUEST["post_id"],'userssss',array($_REQUEST['user_id']),true);
+        $users_who_liked = get_post_meta($_REQUEST["post_id"], "userssss", true);
+    }else{
+        array_push($users_who_liked,$_REQUEST['user_id']);
+        update_post_meta($_REQUEST["post_id"], "userssss",$users_who_liked,true);
+    }
+    
+
+    // $users_who_liked = get_post_meta($_REQUEST["post_id"], "usersss", true);
+    // array_push($users_who_liked,$_REQUEST['user_id']);
+    // if($users_who_liked!=[]){
+    //     update_post_meta($_REQUEST["post_id"], "usersss",$users_who_liked);
+    // }else{
+    //     add_post_meta($_REQUEST["post_id"],'usersss',$users_who_liked,true);
+    // }
+    
     $new_like_count = $like_count + 1;
 
-    $like = update_post_meta($_REQUEST["post_id"], "likes",$new_like_count);
+    update_post_meta($_REQUEST["post_id"], "likes",$new_like_count);
 
     echo json_encode($new_like_count);
+    die();
+}
+
+function jsforwp_add_views(){
+    check_ajax_referer('nonce_name');
+   
+    $count = get_post_meta($_REQUEST["post_id"], "views", true);
+    $new_count = $count + 1;
+
+    update_post_meta($_REQUEST["post_id"], "views",$new_count);
+
+    echo json_encode($new_count);
     die();
 }
 
@@ -195,3 +291,18 @@ function my_must_login() {
 
 add_action('wp_ajax_jsforwp_add_like','jsforwp_add_like');
 add_action('wp_ajax_nopriv_jsforwp_add_like','my_must_login');
+
+add_action('wp_ajax_jsforwp_add_views','jsforwp_add_views');
+add_action('wp_ajax_nopriv_jsforwp_add_views','my_must_login');
+
+
+function searchfilter($query) {
+ 
+    if ($query->is_search) {
+        $query->set('post_type',array('post','recipes'));
+    }
+ 
+return $query;
+}
+ 
+add_filter('pre_get_posts','searchfilter');

@@ -57,8 +57,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 
 #header{
-    background: #86a85d;
     padding: 5px 0px;
+    transition: .3s background-color ease-in-out;
 }
 
 .img-fluid{
@@ -87,6 +87,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     width: 100%;
     z-index: 99;
 }
+
 #menu .menu{
     display: flex;
 }
@@ -97,11 +98,31 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     transition: .1s all linear;
 }
 
-#menu .menu li:hover{
+#search{
+    position: absolute;
+    right:0%;
+    top:110%;
+    display: none;
+}
+.position-relative{
+    position: relative;
+}
+
+#search .search-submit{
+    display: none;
+}
+
+
+#search .search-field{
+    padding: 5px 12px;
+    border:1px solid #dcdcdc;
+}
+
+#menu .menu li:hover a{
     border-bottom: 5px solid #487e07;
 }
 
-#menu .menu li.current-menu-item{
+#menu .menu li.current-menu-item a{
     border-bottom: 5px solid #487e07;
 }
 
@@ -127,11 +148,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 .banner{
     margin-top: 0px;
-    text-align: center;
     font-family: 'Montserrat';
-    background: url('images/Green\ Papaya\ Salad.png') no-repeat center center;
+    background: url('images/Gaeng Keow Wan Gai (Thai Green Curry Chicken).jpg') no-repeat center center;
     background-size:cover;
-    padding: 22em 10em 20em 10em;
+    padding: 25em 10em 20em 20em;
 }
 
 .banner .banner-title{
@@ -143,12 +163,22 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 .banner .banner-desc{
     color: white;
-    max-width: 35em;
-    margin:auto;
+    max-width: 44em;
     font-size: 1.3em;
     font-weight: 300;
-    line-height: 27px;
+    line-height: 30px;
 }
+
+
+/* .nav-scroll{
+    animation: fillcolor .2s ease-in-out forwards;
+}
+@keyframes fillcolor{
+    to{
+        background: #86a85d;
+    }
+} */
+
 
 .green{
     color: #86a85d;
@@ -188,9 +218,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     flex: 1 1 60%;
 }
 
-#sidebar{
-   
-}
+
 .cat-like-holder .cat{
     border:1px solid white;
     font-weight: bold;
@@ -208,8 +236,16 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     line-height: 23px;
 }
 
+.card .card-title:hover{
+    text-decoration: underline;
+}
+
 .like{
-    cursor: pointer;
+    border:1px solid white;  cursor: pointer;
+    padding: 0px 10px;
+}
+.likes{
+    cursor: default;
 }
 .translation-container *{
     font-family: 'Montserrat' !important;
@@ -416,6 +452,26 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     font-family: "FontAwesome" !important;
 }
 
+#archive{
+    padding-top: 50px;
+}
+
+.navigation{
+    margin-top: 20px;
+}
+.navigation .nav-links *{
+    font-family: 'Montserrat' !important;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #86a85d;
+}
+.my-form input,.my-form textarea{
+    color: black !important;
+}
+.views{
+    cursor: default;
+}
 @media (max-width:1024px){
     .banner{
         padding: 12em 9em 9em 9em;
@@ -432,7 +488,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 @media (max-width:730px){
     .banner{
-        padding: 8em 4em;
+        padding: 7em 4em 8em 4em;
     }
     .banner .banner-desc{
         font-size: 1.2em;
